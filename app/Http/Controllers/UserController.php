@@ -15,6 +15,13 @@ class UserController extends Controller
         try {
             $user = User::findOrFail($id);
 
+            if ($user->role === 'admin') {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'You do not have permission to downgrade an admin'
+                ], 403);
+            };
+
             $user->role = $request->input('role', $user->role);
 
             $user->save();
