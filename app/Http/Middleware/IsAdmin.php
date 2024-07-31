@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class isAdmin
+class IsAdmin
 {
     /**
      * Handle an incoming request.
@@ -15,6 +15,17 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if(auth()->user()->role !== "admin")
+        {
+
+            return response()->json(
+                 [
+                    "success" => false,
+                    "message" => "You dont have permissions"
+                 ],
+                 403
+            );
+        }
         return $next($request);
     }
 }
