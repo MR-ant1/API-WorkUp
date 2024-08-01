@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('project_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('manager_id');
-            $table->boolean('is_completed')->default(false);
+            $table->boolean('is_completed')->default(0);
             $table->timestamps();
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

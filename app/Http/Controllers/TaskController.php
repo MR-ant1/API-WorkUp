@@ -129,4 +129,38 @@ class TaskController extends Controller
             ], 500);
         }
     }
+
+    public function markTaskCompleted(Request $request, $id)
+    {
+        try {
+            $task = Task::findOrFail($id);
+            $user = auth()->user();
+
+            if ($user->id !== $task->user_id) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'You are not meant to complete this task'
+                ], 403);
+            };
+            if ($task->is_completed === 0) {
+                $task->is_completed = 1;
+                $task->save();
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Task marked'
+                ], 200);
+        } else {$task->is_completed = 0;
+                $task->save();
+            return response()->json([
+                'success' => true,
+                'message' => 'Task unmarked'
+            ], 200);}
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Could not mark task',
+                'error' => $th->getMessage()
+            ], 500);
+        }
+    }
 }
