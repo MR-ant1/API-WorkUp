@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Task;
+use App\Models\userProject;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -17,7 +18,7 @@ class CommentController extends Controller
             if (!$task) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Couldn post comment'
+                    'message' => 'Couldnt create comment'
                 ], 404);
             }
 
@@ -26,7 +27,23 @@ class CommentController extends Controller
             $comment->user_id = $user->id;
             $comment->task_id = $task->id;
 
-            $comment->save();
+            if ($task->manager_id !== $user->id) {
+                $userProject = userProject::where('project_id', $task->project_id)->where('user_id', $user->id)->first();
+                if (!$userProject) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Couldnt create comment'
+                    ], 403);
+                    }
+                    $userTask = Task::findOrFail($id)->where('user_id', $user->id)->first();
+                    if (!$userTask) {
+                        return response()->json([
+                            'success' => false,
+                            'message' => 'Couldnt create comment'
+                        ], 403);
+                        }             
+                }
+                $comment->save();
 
             return response()->json([
                 'success' => true,

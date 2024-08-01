@@ -145,13 +145,6 @@ class TaskController extends Controller
             $task = Task::findOrFail($id);
             $user = auth()->user();
 
-            // if ($user->id !== $task->user_id) {
-            //     return response()->json([
-            //         'success' => false,
-            //         'message' => 'You are not meant to complete this task'
-            //     ], 403);
-            // };
-
             if ($task->manager_id !== $user->id) {
             $userProject = userProject::where('project_id', $task->project_id)->where('user_id', $user->id)->first();
             if (!$userProject) {
@@ -161,8 +154,6 @@ class TaskController extends Controller
                 ], 404);
                 }
             }
-
-            
 
             if ($task->is_completed === 0) {
                 $task->is_completed = 1;
