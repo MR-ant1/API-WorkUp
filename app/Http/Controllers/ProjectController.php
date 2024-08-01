@@ -40,4 +40,93 @@ class ProjectController extends Controller
             ], 500);
         }
     }
+
+    public function updateProject( Request $request, $id)
+    {
+        try {
+            $project = Project::findOrFail($id);
+            $user = auth()->user();
+
+            if ($user->role !== 'project manager') {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'You do not have permission to edit a project'
+                ], 403);
+            };
+
+            $project->project_title = $request->input('projectTitle', $project->projectTitle);
+            $project->project_description = $request->input('projectDescription', $project->projectDescription);
+
+            $project->save();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Project updated successfully',
+                'data' => $project
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Could not update project',
+                'error' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    public function deleteProject($id)
+    {
+        try {
+            $project = Project::findOrFail($id);
+            $user = auth()->user();
+
+            if ($user->role !== 'project manager') {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'You do not have permission to remove a project'
+                ], 403);
+            };
+            $project->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Successfully deleted project'
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Could not delete project',
+                'error' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    public function updateUserProjectPermissions($id)
+    {
+        try {
+            $user = User::findOrFail($id);
+
+            if ($user->role === 'admin') {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'You do not have permission to downgrade an admin'
+                ], 403);
+            };
+
+            $user->role = 'project manager';
+
+            $user->save();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'User permissions updated successfully',
+                'data' => $user
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Could not update permissions',
+                'error' => $th->getMessage()
+            ], 500);
+        }
+    }
 }

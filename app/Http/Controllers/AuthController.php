@@ -30,23 +30,22 @@ class AuthController extends Controller
             }
             $user = User::query()->where('email', $email)->first();
 
-            if (!$user) {
-                return response()->json(
-                    [
-                        'success' => true,
-                        'message' => "User logged succesfully",
-                        'data' => $user
-                    ],
-                    400
-                );
-            }
+            // if (!$user) {
+            //     return response()->json(
+            //         [
+            //             'success' => false,
+            //             'message' => "Couldnt login",
+            //         ],
+            //         400
+            //     );
+            // }
             $checkPasswordUser = Hash::check($password, $user->password);
 
             if (!$checkPasswordUser) {
                 return response()->json(
                     [
                         "success" => false,
-                        "message" => "Email or password not valid 2",
+                        "message" => "Email or password not valid",
                         // "error" => $th->getMessage()
                     ],
                     400
@@ -60,7 +59,7 @@ class AuthController extends Controller
             return response()->json(
                 [
                     "success" => true,
-                    "message" => "user logged",
+                    "message" => "user logged succesfully",
                     "token" => $token
                 ],
                 200
