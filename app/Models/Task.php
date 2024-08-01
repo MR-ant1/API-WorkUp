@@ -16,5 +16,6 @@ class Task extends Model
         'userId',
         'projectId',
         'managerId',
+        'is_completed',
     ];
 }
