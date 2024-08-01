@@ -58,5 +58,26 @@ class UserProjectController extends Controller
         }
     }
 
+    
+    
+    public function getMyProjects( Request $request)
+    {
+        try {
+            $user = auth()->user();
+            $userProjects = userProject::where('user_id', $user->id)->get();
+            $projects = Project::find($userProjects);
 
+            return response()->json([
+                'success' => true,
+                'message' => 'Projects came successfully',
+                'data' => $userProjects
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Could not get projects',
+                'error' => $th->getMessage()
+            ], 500);
+        }
+    }
 }

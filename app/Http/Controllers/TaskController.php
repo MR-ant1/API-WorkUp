@@ -22,7 +22,7 @@ class TaskController extends Controller
                 ], 403);
             }
 
-            
+
             if (!$project) {
                 return response()->json([
                     'success' => false,
@@ -45,7 +45,7 @@ class TaskController extends Controller
                     'success' => false,
                     'message' => 'Couldnt create task'
                 ], 404);
-                }
+            }
 
             $task->save();
 
@@ -54,7 +54,6 @@ class TaskController extends Controller
                 'message' => 'Task created successfully',
                 'data' => $task
             ], 201);
-
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
@@ -146,12 +145,12 @@ class TaskController extends Controller
             $user = auth()->user();
 
             if ($task->manager_id !== $user->id) {
-            $userProject = userProject::where('project_id', $task->project_id)->where('user_id', $user->id)->first();
-            if (!$userProject) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Couldnt mark task'
-                ], 404);
+                $userProject = userProject::where('project_id', $task->project_id)->where('user_id', $user->id)->first();
+                if (!$userProject) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Couldnt mark task'
+                    ], 404);
                 }
             }
 
@@ -164,14 +163,15 @@ class TaskController extends Controller
                     'success' => true,
                     'message' => 'Task marked'
                 ], 200);
-        } else {$task->is_completed = 0;
+            } else {
+                $task->is_completed = 0;
                 $task->save();
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Task unmarked'
-            ], 200);}
-
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Task unmarked'
+                ], 200);
+            }
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
