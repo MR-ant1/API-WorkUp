@@ -1,0 +1,347 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Proyecto WorkUp",
+    "collectionId": "f17e3d6a-8543-48d6-930d-df3fabf24031",
+    "dateExported": "2024-08-01T18:04:33.921Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "a3ef13b6-1820-437c-a9f7-ee777b8153bf",
+            "name": "AUTH",
+            "containerId": "",
+            "created": "2024-07-31T17:46:59.620Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "3565378d-7b92-43a6-ac2f-fbb3228428e9",
+            "name": "USERS",
+            "containerId": "",
+            "created": "2024-07-31T18:38:47.537Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "3fcde2ac-5d61-4d4d-a2ef-c9b1e012013b",
+            "name": "PROJECTS",
+            "containerId": "",
+            "created": "2024-07-31T20:57:27.658Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "595a6a81-a54e-4d67-979b-9265d5292689",
+            "name": "TASKS",
+            "containerId": "",
+            "created": "2024-08-01T07:29:22.576Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "aaf08bd1-3dea-4c3d-b171-5e9f5ac0d089",
+            "name": "PROJECT-USER",
+            "containerId": "",
+            "created": "2024-08-01T09:59:33.180Z",
+            "sortNum": 50000
+        },
+        {
+            "_id": "cb6c37b7-7d45-41fa-86d2-de16a1fc6494",
+            "name": "COMMENTS",
+            "containerId": "",
+            "created": "2024-08-01T10:35:18.338Z",
+            "sortNum": 60000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "752893ee-9847-4be9-8d73-ab1eb70d73aa",
+            "colId": "f17e3d6a-8543-48d6-930d-df3fabf24031",
+            "containerId": "a3ef13b6-1820-437c-a9f7-ee777b8153bf",
+            "name": "LOGOUT",
+            "url": "localhost:8000/api/auth/logout",
+            "method": "DELETE",
+            "sortNum": 10000,
+            "created": "2024-07-31T17:47:09.461Z",
+            "modified": "2024-07-31T18:14:56.112Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "2|CiPpTuzhImV0h0Zp9UbmaLmVaa72hQY3zkQQvg8M6a3f22db"
+            }
+        },
+        {
+            "_id": "0c048932-09ff-4f17-8d06-e241b2929090",
+            "colId": "f17e3d6a-8543-48d6-930d-df3fabf24031",
+            "containerId": "a3ef13b6-1820-437c-a9f7-ee777b8153bf",
+            "name": "LOGIN",
+            "url": "localhost:8000/api/auth/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-07-31T18:15:21.225Z",
+            "modified": "2024-08-01T17:16:39.658Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"nhermiston@example.net\",\n  \"password\": \"aA123456\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "8161a7d3-507c-4122-81d7-c1fcc5360a6d",
+            "colId": "f17e3d6a-8543-48d6-930d-df3fabf24031",
+            "containerId": "a3ef13b6-1820-437c-a9f7-ee777b8153bf",
+            "name": "REGISTER",
+            "url": "localhost:8000/api/auth/register",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-07-31T18:21:02.620Z",
+            "modified": "2024-07-31T18:25:30.493Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"User sample\",\n  \"email\": \"sampler@user.com\",\n  \"password\":\"aA123456\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "5baeb6ef-5919-4863-b049-5ca424d80269",
+            "colId": "f17e3d6a-8543-48d6-930d-df3fabf24031",
+            "containerId": "3565378d-7b92-43a6-ac2f-fbb3228428e9",
+            "name": "UPDATE USER ROLE",
+            "url": "localhost:8000/api/users/role/8",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-07-31T18:38:59.829Z",
+            "modified": "2024-08-01T08:09:26.165Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"role\":\"project manager\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "9|gDz2DdZLFWzZvHbH4yhJ4UJeX47U9h4dhneZW5FGa1801037"
+            }
+        },
+        {
+            "_id": "80f28745-3f90-4b50-9bf9-8d18d16ecaed",
+            "colId": "f17e3d6a-8543-48d6-930d-df3fabf24031",
+            "containerId": "3565378d-7b92-43a6-ac2f-fbb3228428e9",
+            "name": "GET PROFILE",
+            "url": "localhost:8000/api/users/profile",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-07-31T18:58:12.660Z",
+            "modified": "2024-07-31T18:59:03.804Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "4|wdYdEirVvlZ6zn5HmUpDgWsfKbRXwoeFrtJm5Iu9ee2a374a"
+            }
+        },
+        {
+            "_id": "eca6ad9b-180b-475d-ac7b-e505c176c9b4",
+            "colId": "f17e3d6a-8543-48d6-930d-df3fabf24031",
+            "containerId": "3fcde2ac-5d61-4d4d-a2ef-c9b1e012013b",
+            "name": "CREATE PROJECT",
+            "url": "localhost:8000/api/projects",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-07-31T20:57:59.905Z",
+            "modified": "2024-07-31T21:55:28.012Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"project_title\": \"weeeeydadgdggdfdwe\",\n  \"project_description\":\"dfgfdewdwedewgio\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "6|w5ps2ND9gOVe6HyqiJOsgxXQ6Thmaowfrm13npx4c9afd0a6"
+            }
+        },
+        {
+            "_id": "c3a769ba-b395-459d-a520-0ad123a8fbfb",
+            "colId": "f17e3d6a-8543-48d6-930d-df3fabf24031",
+            "containerId": "3fcde2ac-5d61-4d4d-a2ef-c9b1e012013b",
+            "name": "UPDATE PROJECT",
+            "url": "localhost:8000/api/projects/4",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2024-07-31T22:07:10.203Z",
+            "modified": "2024-08-01T07:22:59.066Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"projectTitle\": \"asdfasfefdsfsddsadas\",\n  \"projectDescription\": \"dadasdas\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "7|ASei3ajQtAuW2LzNn2QtQR8sQznhdGw83RDJ5F9i52030188"
+            }
+        },
+        {
+            "_id": "f307372c-3e24-4e10-b621-d048035f4f21",
+            "colId": "f17e3d6a-8543-48d6-930d-df3fabf24031",
+            "containerId": "3fcde2ac-5d61-4d4d-a2ef-c9b1e012013b",
+            "name": "UPDATE PERMISSIONS",
+            "url": "localhost:8000/api/projects/permissions/2",
+            "method": "PUT",
+            "sortNum": 80000,
+            "created": "2024-07-31T22:07:18.878Z",
+            "modified": "2024-08-01T10:24:52.084Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "1|gwrna2FT41RG3NRqdMDTHhT4rluDJMBBDqzGJwDD8ec2a4bc"
+            }
+        },
+        {
+            "_id": "86e5e39f-cc73-4cf2-8cba-5ba4f19c97de",
+            "colId": "f17e3d6a-8543-48d6-930d-df3fabf24031",
+            "containerId": "3fcde2ac-5d61-4d4d-a2ef-c9b1e012013b",
+            "name": "DELETE PROJECT",
+            "url": "localhost:8000/api/projects/4",
+            "method": "DELETE",
+            "sortNum": 90000,
+            "created": "2024-08-01T07:24:18.694Z",
+            "modified": "2024-08-01T07:28:02.497Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "7|ASei3ajQtAuW2LzNn2QtQR8sQznhdGw83RDJ5F9i52030188"
+            }
+        },
+        {
+            "_id": "0f28fe94-c5c9-411e-95ad-13553fe44f5a",
+            "colId": "f17e3d6a-8543-48d6-930d-df3fabf24031",
+            "containerId": "595a6a81-a54e-4d67-979b-9265d5292689",
+            "name": "CREATE TASK",
+            "url": "localhost:8000/api/tasks/1",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2024-08-01T07:41:40.912Z",
+            "modified": "2024-08-01T11:30:12.229Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"task_name\": \"fdsfsf\",\n \"task_description\": \"fdsfcxzcdsdssfsd\",\n \"deadline_date\": \"2024-08-18\",\n \"user_id\": 3\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "2|ZKn72ws5zLbeyiYwKEcMCJ93x6tBO0P0ZR4uqswWa07fec23"
+            }
+        },
+        {
+            "_id": "6e8f28db-f37d-41db-ac1f-abf5ed5887cd",
+            "colId": "f17e3d6a-8543-48d6-930d-df3fabf24031",
+            "containerId": "595a6a81-a54e-4d67-979b-9265d5292689",
+            "name": "UPDATE TASK",
+            "url": "localhost:8000/api/tasks/2",
+            "method": "PUT",
+            "sortNum": 110000,
+            "created": "2024-08-01T08:03:58.543Z",
+            "modified": "2024-08-01T08:19:34.436Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"task_name\": \"faefadsdas\",\n  \"task_description\": \"dasdasd\",\n  \"deadline_date\": \"2024-01-18\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "10|6PFL5F2O0CMLVhtjTK56ca82M3w4U8n00TKExexTb4f6ad59"
+            }
+        },
+        {
+            "_id": "b7043445-a2cf-4a5b-8139-305e0a1750a1",
+            "colId": "f17e3d6a-8543-48d6-930d-df3fabf24031",
+            "containerId": "595a6a81-a54e-4d67-979b-9265d5292689",
+            "name": "DELETE TASK",
+            "url": "localhost:8000/api/tasks/2",
+            "method": "DELETE",
+            "sortNum": 120000,
+            "created": "2024-08-01T08:21:40.446Z",
+            "modified": "2024-08-01T08:22:14.676Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "10|6PFL5F2O0CMLVhtjTK56ca82M3w4U8n00TKExexTb4f6ad59"
+            }
+        },
+        {
+            "_id": "101d23f4-fc0d-45e0-b450-12a9f6522e60",
+            "colId": "f17e3d6a-8543-48d6-930d-df3fabf24031",
+            "containerId": "595a6a81-a54e-4d67-979b-9265d5292689",
+            "name": "MARK TASK COMPLETED",
+            "url": "localhost:8000/api/tasks/completed/11",
+            "method": "PUT",
+            "sortNum": 130000,
+            "created": "2024-08-01T08:35:34.430Z",
+            "modified": "2024-08-01T11:50:13.663Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "7|z6Ud0HRYUga1WZefXbwj8P9VWjLakHjmwq0Z9wwi7dd9fb42"
+            }
+        },
+        {
+            "_id": "633c0fec-3e2a-4a14-9c94-bbcf6fe45a0e",
+            "colId": "f17e3d6a-8543-48d6-930d-df3fabf24031",
+            "containerId": "aaf08bd1-3dea-4c3d-b171-5e9f5ac0d089",
+            "name": "ADD USER TO PROJECT",
+            "url": "localhost:8000/api/userProject/1",
+            "method": "POST",
+            "sortNum": 140000,
+            "created": "2024-08-01T09:59:43.273Z",
+            "modified": "2024-08-01T11:11:19.206Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_id\":\"3\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "2|ZKn72ws5zLbeyiYwKEcMCJ93x6tBO0P0ZR4uqswWa07fec23"
+            }
+        },
+        {
+            "_id": "de799f4e-df62-4ce1-930d-7236ad3c94af",
+            "colId": "f17e3d6a-8543-48d6-930d-df3fabf24031",
+            "containerId": "cb6c37b7-7d45-41fa-86d2-de16a1fc6494",
+            "name": "SEND COMMENT",
+            "url": "localhost:8000/api/comments/11",
+            "method": "POST",
+            "sortNum": 150000,
+            "created": "2024-08-01T10:35:26.072Z",
+            "modified": "2024-08-01T12:30:47.150Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"comment\": \"pmdss hit\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "15|pri7TiGyf0MoWFHx39bXF0BbBkB6MnPhyAlir1uYa09f16f0"
+            }
+        },
+        {
+            "_id": "b2adb703-d3ca-4291-a0a9-a4608259d60a",
+            "colId": "f17e3d6a-8543-48d6-930d-df3fabf24031",
+            "containerId": "3fcde2ac-5d61-4d4d-a2ef-c9b1e012013b",
+            "name": "GET MY PROJECTS",
+            "url": "localhost:8000/api/userProject",
+            "method": "GET",
+            "sortNum": 160000,
+            "created": "2024-08-01T17:05:24.803Z",
+            "modified": "2024-08-01T17:47:08.619Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "26|rrprl9hPIhVvqnKrdzeuldf1Esphw53fx2BUcXbi5616dd59"
+            }
+        }
+    ],
+    "ref": "5yAbwm3Ukf8f8CuzmraNHqgGWuOqe4vEdsR6xinkBl9dRTdqGEIAaAgutNkRsY-SrqYXbN_RsJjKItnovV_njQ"
+}

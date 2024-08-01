@@ -6,5 +6,6 @@ use Illuminate\Support\Facades\Route;
 
 //Projects
 
-Route::post('/userProject/{id}', [UserProjectController::class, 'addUserToProject'])->middleware('auth:sanctum');
-Route::get('/userProjects', [UserProjectController::class, 'getMyProjects'])->middleware('auth:sanctum');
+Route::get('/userProject', [UserProjectController::class, 'getMyProjects'])->middleware('auth:sanctum');
+Route::post('/userproject/{id}', [UserProjectController::class, 'addUserToProject'])->middleware('auth:sanctum');
+

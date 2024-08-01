@@ -1,66 +1,101 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Work Up Backend
 
-## About Laravel
+<details>
+  <summary>Contenido 📝</summary>
+  <ol>
+    <li><a href="#Objetivo🎯">Objetivo🎯</a></li>
+    <li><a href="#Sobre-el-proyecto📰">Sobre el proyecto 📰</a></li>
+    <li><a href="##Stack ✨">Stack ✨</a></li>
+    <li><a href="##Diagrama BD 🌐">Diagrama BD 🌐</a></li>
+    <li><a href="##Instalaciónenlocal 💻"> Instalación en local 💻</a></li>
+    <li><a href="##Endpoints 🎢">Endpoints 🎢</a></li>
+    <li><a href="##Futurasfuncionalidades ✅">Futuras funcionalidades ✅</a></li>
+    <li><a href="##Webgrafia 👓">Webgrafia 👓</a></li>
+    <li><a href="##Compañerosdeequipo 🐱‍👤:"> Compañeros de equipo 🐱‍👤:</a></li>    
+  </ol>
+</details>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Objetivo🎯
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Este proyecto requería una API funcional conectada a una base de datos en la que simule un entorno laboral en el que los projects managers asocian a trabajadores con proyectos, y dentro de estos, les asignan tareas individualmente.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Sobre el proyecto 📰
 
-## Learning Laravel
+Esta herramienta de organización de equipos de trabajo, permite crear editar y borrar tanto usuarios, como proyectos y tareas. También se pueden dejar comentarios en las tareas. Además todas estas funciones cuentan con validaciones que aseguren que cada usuario solo puede interaccionar con proyectos o tareas a las que se le haya asociado.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Stack ✨
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Tecnologías utilizadas:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<div align="center">
+<a href="">
+    <img src= "https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white"/>
+</a>
+<a href="https:">
+    <img src= "https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white"/>
+</a>
+<a href="https://">
+    <img src= "https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white"/>
+</a>
 
-## Laravel Sponsors
+<a href="https://">
+    <img src= "https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
+<a href="https://">
+    <img src= "https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white
+    "/>
+</a>
+ </div>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Diagrama BD 🌐
 
-### Premium Partners
+![alt text](<img/Diagrama WorkUp.png>)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+La estructura de la base de datos y sus relaciones posicionan a la tabla usuarios como la tabla principal, siendo proyectos la siguiente en la que se engloban las tareas. Todo usuario debe pertenecer a un proyecto para poder asignársele tareas.
 
-## Contributing
+Se ha utilizado el framework Laravel en su versión mas reciente con migraciones y seeders para el manejo de la base de datos.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Instalación en local 💻
 
-## Security Vulnerabilities
+Nota: para este proyecto será necesario tener instalado en local PHP y Composer
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<a href="https://www.php.net/manual/en/install.php"> Descarga PHP </a>
 
-## License
+<a href="https://getcomposer.org/download/"> Descarga Composer </a>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. Crear container docker con el puerto que se desee para la base de datos y clonar el repositorio.
+2. Instalamos dependencias
+   `$ composer install`
+3. Conectamos nuestro repositorio con la base de datos, para ello creamos el archivo .env copiando los datos de .env.example y rellenamos los campos con la conexión a nuestra base de datos en local.
+4. Ejecutamos las migraciones
+   `$ php artisan migrate`
+5. Ejecutamos los seeders
+   ` $ php artisan db:seed`
+6. Iniciamos el servidor
+   `$ php artisan serve`
+7. ...
+
+## Funciones
+
+- Login con validación, hasheo de contraseña y creación de token
+- Logout
+- Crear, editar y borrar usuarios.
+- Crear, editar y borrar proyectos.
+- Crear, editar y borrar tareas.
+- Traer proyectos de un usuario
+- Marcar tara como completada
+- Añadir usuario a Proyecto (project managers o admin)
+- Crear comentarios en tareas (solo si el usuario la tiene asignada o es project manager)
+- Hacer project manager a usuario (project managers)
+- Hacer superadmin o bajar rol o otros usuarios (admin)
+
+
+
+## Webgrafia 👓
+
+Para conseguir mi objetivo he recopilado información de:
+
+-   <a href="https://laravel.com/docs/9.x/"> Laravel 9.x </a>
