@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\Task;
+use App\Models\userProject;
 use Illuminate\Http\Request;
-use PhpParser\Node\Expr\Cast\Object_;
 
 class TaskController extends Controller
 {
@@ -37,6 +37,15 @@ class TaskController extends Controller
             $task->user_id = $request->input('user_id');
             $task->project_id = $project->id;
             $task->manager_id = $project->creator_id;
+
+            $userProject = userProject::where('project_id', $id)->where('user_id', $task->user_id)->first();
+
+            if (!$userProject) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Couldnt create task'
+                ], 404);
+                }
 
             $task->save();
 
@@ -142,6 +151,12 @@ class TaskController extends Controller
                     'message' => 'You are not meant to complete this task'
                 ], 403);
             };
+
+            // $userSearch = userProject::findOrFail('user_id' = $user->id)
+            // if($userSearch && ) {
+
+            // }
+
             if ($task->is_completed === 0) {
                 $task->is_completed = 1;
                 $task->save();

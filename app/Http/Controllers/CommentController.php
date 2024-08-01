@@ -2,38 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function createProject(Request $request)
+    public function createComment(Request $request, $id)
     {
         try {
-            $userRole = $request->user()->role;
+            $user = auth()->user();
+            $task = Task::findOrFail($id);
 
-            if (($userRole !== ('project manager')) && ($userRole !== 'admin')) {
+            if (!$task) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Unauthorized'
-                ], 403);
+                    'message' => 'Couldn post comment'
+                ], 404);
             }
 
-            $project = new Project();
-            $project->project_title = $request->project_title;
-            $project->project_description = $request->project_description;
-            $project->creator_id = $request->user()->id;
+            $comment = new Comment();
+            $comment->comment = $request->comment;
+            $comment->user_id = $user->id;
+            $comment->task_id = $task->id;
 
-            $project->save();
+            $comment->save();
 
             return response()->json([
                 'success' => true,
-                'message' => 'Project created successfully',
-                'data' => $project
+                'message' => 'Comment send successfully',
+                'data' => $comment
             ], 201);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
-                'message' => 'Project cant be created',
+                'message' => 'comment cant be created',
                 'error' => $th->getMessage()
             ], 500);
         }

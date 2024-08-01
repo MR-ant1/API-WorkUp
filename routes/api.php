@@ -25,3 +25,4 @@ require __DIR__ . '/users.php';
 require __DIR__ . '/projects.php';
 require __DIR__ . '/tasks.php';
 require __DIR__ . '/userproject.php';
+require __DIR__ . '/comments.php';
