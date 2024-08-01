@@ -34,7 +34,7 @@ class TaskController extends Controller
             $task->task_name = $request->input('task_name');
             $task->task_description = $request->input('task_description');
             $task->deadline_date = $request->input('deadline_date');
-            $task->user_id = $user->id;
+            $task->user_id = $request->input('user_id');
             $task->project_id = $project->id;
             $task->manager_id = $project->creator_id;
 
@@ -58,30 +58,38 @@ class TaskController extends Controller
     public function updateTask(Request $request, $id)
     {
         try {
-            $project = Project::findOrFail($id);
+            $task = Task::findOrFail($id);
             $user = auth()->user();
 
             if ($user->role !== 'project manager') {
                 return response()->json([
                     'success' => false,
-                    'message' => 'You do not have permission to edit a project'
+                    'message' => 'You do not have permission to edit a task'
                 ], 403);
             };
 
-            $project->project_title = $request->input('projectTitle', $project->projectTitle);
-            $project->project_description = $request->input('projectDescription', $project->projectDescription);
+            if ($user->id !== $task->manager_id) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'You do not have permission to edit this task'
+                ], 403);
+            };
 
-            $project->save();
+            $task->task_name = $request->input('task_name', $task->task_name);
+            $task->task_description = $request->input('task_description', $task->task_description);
+            $task->deadline_date = $request->input('deadline_date', $task->deadline_date);
+
+            $task->save();
 
             return response()->json([
                 'success' => true,
-                'message' => 'Project updated successfully',
-                'data' => $project
+                'message' => 'Task updated successfully',
+                'data' => $task
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
-                'message' => 'Could not update project',
+                'message' => 'Could not update task',
                 'error' => $th->getMessage()
             ], 500);
         }
@@ -90,25 +98,33 @@ class TaskController extends Controller
     public function deleteTask($id)
     {
         try {
-            $project = Project::findOrFail($id);
+            $task = Task::findOrFail($id);
             $user = auth()->user();
 
             if ($user->role !== 'project manager') {
                 return response()->json([
                     'success' => false,
-                    'message' => 'You do not have permission to remove a project'
+                    'message' => 'You do not have permission to remove a task'
                 ], 403);
             };
-            $project->delete();
+
+            if ($user->id !== $task->manager_id) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'You do not have permission to delete this task'
+                ], 403);
+            };
+
+            $task->delete();
 
             return response()->json([
                 'success' => true,
-                'message' => 'Successfully deleted project'
+                'message' => 'Successfully deleted task'
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
-                'message' => 'Could not delete project',
+                'message' => 'Could not delete task',
                 'error' => $th->getMessage()
             ], 500);
         }
