@@ -145,68 +145,42 @@ class TaskController extends Controller
             $task = Task::findOrFail($id);
             $user = auth()->user();
 
-            if ($user->id !== $task->user_id) {
+            // if ($user->id !== $task->user_id) {
+            //     return response()->json([
+            //         'success' => false,
+            //         'message' => 'You are not meant to complete this task'
+            //     ], 403);
+            // };
+
+            if ($task->manager_id !== $user->id) {
+            $userProject = userProject::where('project_id', $task->project_id)->where('user_id', $user->id)->first();
+            if (!$userProject) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'You are not meant to complete this task'
-                ], 403);
-            };
-
-            // $userSearch = userProject::findOrFail('user_id' = $user->id)
-            // if($userSearch && ) {
-
-            // }
-
-            if ($task->is_completed === 0) {
-                $task->is_completed = 1;
-                $task->save();
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Task marked'
-                ], 200);
-        } else {$task->is_completed = 0;
-                $task->save();
-            return response()->json([
-                'success' => true,
-                'message' => 'Task unmarked'
-            ], 200);}
-        } catch (\Throwable $th) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Could not mark task',
-                'error' => $th->getMessage()
-            ], 500);
-        }
-    }
-
-    public function addUserToTask(Request $request, $id)
-    {
-        try {
-            $task = Task::findOrFail($id);
-            $user = $request->input('task_id');
-            $manager = auth()->user();
-
-            if ($user->role !== 'project manager') {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'You are not meant to edit task'
-                ], 403);
-            };
+                    'message' => 'Couldnt mark task'
+                ], 404);
+                }
+            }
 
             
+
             if ($task->is_completed === 0) {
                 $task->is_completed = 1;
+
                 $task->save();
+
                 return response()->json([
                     'success' => true,
                     'message' => 'Task marked'
                 ], 200);
         } else {$task->is_completed = 0;
                 $task->save();
+
             return response()->json([
                 'success' => true,
                 'message' => 'Task unmarked'
             ], 200);}
+
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
